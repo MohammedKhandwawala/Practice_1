@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -61,6 +62,15 @@ public class Splashscreen extends Activity {
         };
         splashTread.start();
 
+
+
     }
+    public boolean onTouchEvent(MotionEvent e)
+    {
+        startActivity( new Intent( this, MainActivity.class ) );
+        finish();
+        return true;
+    }
+
 
 }
