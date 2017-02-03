@@ -71,10 +71,9 @@ public class MainActivity extends AppCompatActivity {
         SpannableString underlinedContent = new SpannableString( tempString );
         underlinedContent.setSpan( new UnderlineSpan(), 0, tempString.length(), 0 );
         registerLink.setText( underlinedContent );
-        tempString = getResources().getString( R.string.restore_link );
+        /*tempString = getResources().getString( R.string.restore_link );
         underlinedContent = new SpannableString( tempString );
-        underlinedContent.setSpan( new UnderlineSpan(), 0, tempString.length(), 0 );
-        restoreLink.setText( underlinedContent );
+        underlinedContent.setSpan( new UnderlineSpan(), 0, tempString.length(), 0 );*/
 
         loginButton.setOnClickListener( new View.OnClickListener()
         {
@@ -99,22 +98,23 @@ public class MainActivity extends AppCompatActivity {
     {
         String identity = identityField.getText().toString();
         String password = passwordField.getText().toString();
-        boolean rememberLogin = rememberLoginBox.isChecked();
+
 
         Backendless.UserService.login( identity, password, new DefaultCallback<BackendlessUser>( MainActivity.this )
         {
             public void handleResponse( BackendlessUser backendlessUser )
             {
                 super.handleResponse( backendlessUser );
-                startActivity( new Intent( MainActivity.this, LoginSuccessActivity.class ) );
-                finish();
+                Intent intent = new Intent(MainActivity.this, LoginSuccessActivity.class);
+                startActivity(intent);
             }
-        }, rememberLogin );
+        } );
     }
 
     public void onRegisterLinkClicked()
     {
-        startActivity( new Intent( this, RegisterActivity.class ) );
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
         finish();
     }
 
